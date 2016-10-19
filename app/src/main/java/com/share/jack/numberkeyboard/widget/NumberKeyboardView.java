@@ -127,10 +127,10 @@ public class NumberKeyboardView extends View {
         xs[1] = (mRectWidth * 3) / 2 + 10;
         xs[2] = (mRectWidth * 5) / 2 + 20;
 
-        ys[0] = mRectHeight / 2 + 20 + mHeight / 2;
-        ys[1] = (mRectHeight * 3) / 2 + 30 + mHeight / 2;
-        ys[2] = (mRectHeight * 5) / 2 + 40 + mHeight / 2;
-        ys[3] = (mRectHeight * 7) / 2 + 50 + mHeight / 2;
+        ys[0] = mRectHeight / 2 + 25 + mHeight / 2;
+        ys[1] = (mRectHeight * 3) / 2 + 35 + mHeight / 2;
+        ys[2] = (mRectHeight * 5) / 2 + 45 + mHeight / 2;
+        ys[3] = (mRectHeight * 7) / 2 + 55 + mHeight / 2;
 
         isInit = true;
     }
@@ -138,21 +138,19 @@ public class NumberKeyboardView extends View {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void drawKeyboard(Canvas canvas) {
         mPaint.setColor(Color.WHITE);
+        //画宫格
         //第一排
         canvas.drawRoundRect(10, mHeight / 2 + 10, 10 + mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
         canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 10, 20 + 2 * mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
         canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 10, 30 + 3 * mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
-
         //第二排
         canvas.drawRoundRect(10, mHeight / 2 + 20 + mRectHeight, 10 + mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
         canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 20 + mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
         canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 20 + mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
-
         //第三排
         canvas.drawRoundRect(10, mHeight / 2 + 30 + 2 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
         canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
         canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
-
         //第四排
         mPaint.setColor(Color.GRAY);
         canvas.drawRoundRect(10, mHeight / 2 + 40 + 3 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
@@ -165,23 +163,19 @@ public class NumberKeyboardView extends View {
         mPaint.setColor(Color.BLACK);
         mPaint.setTextSize(60);// 设置字体大小
         mPaint.setStrokeWidth(2);
-
         //画数字
         //第一排
         canvas.drawText("1", xs[0], ys[0], mPaint);
         canvas.drawText("2", xs[1], ys[0], mPaint);
         canvas.drawText("3", xs[2], ys[0], mPaint);
-
         //第二排
         canvas.drawText("4", xs[0], ys[1], mPaint);
         canvas.drawText("5", xs[1], ys[1], mPaint);
         canvas.drawText("6", xs[2], ys[1], mPaint);
-
         //第三排
         canvas.drawText("7", xs[0], ys[2], mPaint);
         canvas.drawText("8", xs[1], ys[2], mPaint);
         canvas.drawText("9", xs[2], ys[2], mPaint);
-
         //第四排
         canvas.drawText(".", xs[0], ys[3], mPaint);
         canvas.drawText("0", xs[1], ys[3], mPaint);
@@ -331,8 +325,10 @@ public class NumberKeyboardView extends View {
     }
 
     public interface OnNumberClickListener {
+        //回调点击的数字
         public void onNumberReturn(String number);
 
+        //删除键的回调
         public void onNumberDelete();
     }
 }
