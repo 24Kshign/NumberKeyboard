@@ -1,13 +1,6 @@
 # NumberKeyboard
 自定义键盘
-###序言：在上周的项目中，需要做一个密码锁的功能，然后密码下面还得有键盘，就类似支付宝支付的时候那样：
-![](http://upload-images.jianshu.io/upload_images/490111-9abeb3d260b74be0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###当然了，我们项目的需求简单点，纯数字的就可以了，然后上周就百度了自定义键盘，随便找了一个修改修改就用到项目中去了。
-
-多谢这位简友：[[Android] 自定义输入支付密码的软键盘](http://www.jianshu.com/p/faa2a9b463ca)
-
-###今天自己抽空写了一个自定义View的键盘控件，下面跟大家分享一下：
 
 >####思路：
 >1、布局：
