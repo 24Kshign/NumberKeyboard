@@ -1,5 +1,6 @@
 package com.share.jack.numberkeyboard.widget;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -15,7 +17,7 @@ import android.view.View;
 import com.share.jack.numberkeyboard.R;
 
 /**
- * Created by Jack on 16/10/13.
+ * Created by Jack on 16/10/13
  */
 public class NumberKeyboardView extends View {
 
@@ -60,6 +62,7 @@ public class NumberKeyboardView extends View {
         this.onNumberClickListener = onNumberClickListener;
     }
 
+    @SuppressLint("DrawAllocation")
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
@@ -72,34 +75,34 @@ public class NumberKeyboardView extends View {
         //判断是否点击数字
         if (clickX > 0 && clickY > 0) {
             if (type == 0) {  //按下刷新
-                if (number.equals("delete")) {
+                if ("delete".equals(number)) {
                     mPaint.setColor(Color.WHITE);
-                    canvas.drawRoundRect(x1, y1, x2, y2, 10, 10, mPaint);
+                    canvas.drawRoundRect(new RectF(x1, y1, x2, y2), 10, 10, mPaint);
                     canvas.drawBitmap(mBpDelete, xs[2] - mWidthOfBp / 2 + 10, ys[3] - mHeightOfBp / 2 - 10, mPaint);
                 } else {
-                    if (number.equals(".")) {
+                    if (".".equals(number)) {
                         mPaint.setColor(Color.WHITE);
                     } else {
                         mPaint.setColor(Color.GRAY);
                     }
-                    canvas.drawRoundRect(x1, y1, x2, y2, 10, 10, mPaint);
+                    canvas.drawRoundRect(new RectF(x1, y1, x2, y2), 10, 10, mPaint);
                     mPaint.setColor(Color.BLACK);
                     mPaint.setTextSize(60);// 设置字体大小
                     mPaint.setStrokeWidth(2);
                     canvas.drawText(number, clickX, clickY, mPaint);
                 }
             } else if (type == 1) {  //抬起刷新
-                if (number.equals("delete")) {
+                if ("delete".equals(number)) {
                     mPaint.setColor(Color.GRAY);
-                    canvas.drawRoundRect(x1, y1, x2, y2, 10, 10, mPaint);
+                    canvas.drawRoundRect(new RectF(x1, y1, x2, y2), 10, 10, mPaint);
                     canvas.drawBitmap(mBpDelete, xs[2] - mWidthOfBp / 2 + 10, ys[3] - mHeightOfBp / 2 - 10, mPaint);
                 } else {
-                    if (number.equals(".")) {
+                    if (".".equals(number)) {
                         mPaint.setColor(Color.GRAY);
                     } else {
                         mPaint.setColor(Color.WHITE);
                     }
-                    canvas.drawRoundRect(x1, y1, x2, y2, 10, 10, mPaint);
+                    canvas.drawRoundRect(new RectF(x1, y1, x2, y2), 10, 10, mPaint);
                     mPaint.setColor(Color.BLACK);
                     mPaint.setTextSize(60);// 设置字体大小
                     mPaint.setStrokeWidth(2);
@@ -135,29 +138,35 @@ public class NumberKeyboardView extends View {
         isInit = true;
     }
 
+    /**
+     * drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, Paint paint)这种方式在5.0以下的机器上会报错，
+     * 需要换成drawRoundRect(RectF rect, float rx, float ry, @NonNull Paint paint)
+     *
+     * @param canvas
+     */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void drawKeyboard(Canvas canvas) {
         mPaint.setColor(Color.WHITE);
         //画宫格
         //第一排
-        canvas.drawRoundRect(10, mHeight / 2 + 10, 10 + mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 10, 20 + 2 * mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 10, 30 + 3 * mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(10, mHeight / 2 + 10, 10 + mRectWidth, mHeight / 2 + 10 + mRectHeight), 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 10, 20 + 2 * mRectWidth, mHeight / 2 + 10 + mRectHeight), 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 10, 30 + 3 * mRectWidth, mHeight / 2 + 10 + mRectHeight), 10, 10, mPaint);
         //第二排
-        canvas.drawRoundRect(10, mHeight / 2 + 20 + mRectHeight, 10 + mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 20 + mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 20 + mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(10, mHeight / 2 + 20 + mRectHeight, 10 + mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight), 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 20 + mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight), 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 20 + mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight), 10, 10, mPaint);
         //第三排
-        canvas.drawRoundRect(10, mHeight / 2 + 30 + 2 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(10, mHeight / 2 + 30 + 2 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight), 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight), 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight), 10, 10, mPaint);
         //第四排
         mPaint.setColor(Color.GRAY);
-        canvas.drawRoundRect(10, mHeight / 2 + 40 + 3 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(10, mHeight / 2 + 40 + 3 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight), 10, 10, mPaint);
         mPaint.setColor(Color.WHITE);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight), 10, 10, mPaint);
         mPaint.setColor(Color.GRAY);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
+        canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight), 10, 10, mPaint);
 
 
         mPaint.setColor(Color.BLACK);
@@ -211,6 +220,8 @@ public class NumberKeyboardView extends View {
                 //恢复默认值
                 setDefault();
                 return true;
+            default:
+                break;
         }
         return false;
     }
