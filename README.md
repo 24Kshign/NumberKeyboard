@@ -21,27 +21,26 @@
             initData();
        }
        mPaint.setColor(Color.WHITE);
-        //画宫格
-        //第一排
-        canvas.drawRoundRect(10, mHeight / 2 + 10, 10 + mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 10, 20 + 2 * mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 10, 30 + 3 * mRectWidth, mHeight / 2 + 10 + mRectHeight, 10, 10, mPaint);
-        //第二排
-        canvas.drawRoundRect(10, mHeight / 2 + 20 + mRectHeight, 10 + mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 20 + mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 20 + mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight, 10, 10, mPaint);
-        //第三排
-        canvas.drawRoundRect(10, mHeight / 2 + 30 + 2 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight, 10, 10, mPaint);
-        //第四排
-        mPaint.setColor(Color.GRAY);
-        canvas.drawRoundRect(10, mHeight / 2 + 40 + 3 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
-        mPaint.setColor(Color.WHITE);
-        canvas.drawRoundRect(20 + mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
-        mPaint.setColor(Color.GRAY);
-        canvas.drawRoundRect(30 + 2 * mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight, 10, 10, mPaint);
-
+               //画宫格
+               //第一排
+       canvas.drawRoundRect(new RectF(10, mHeight / 2 + 10, 10 + mRectWidth, mHeight / 2 + 10 + mRectHeight), 10, 10, mPaint);
+       canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 10, 20 + 2 * mRectWidth, mHeight / 2 + 10 + mRectHeight), 10, 10, mPaint);
+       canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 10, 30 + 3 * mRectWidth, mHeight / 2 + 10 + mRectHeight), 10, 10, mPaint);
+       //第二排
+       canvas.drawRoundRect(new RectF(10, mHeight / 2 + 20 + mRectHeight, 10 + mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight), 10, 10, mPaint);
+       canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 20 + mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight), 10, 10, mPaint);
+       canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 20 + mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 20 + 2 * mRectHeight), 10, 10, mPaint);
+       //第三排
+       canvas.drawRoundRect(new RectF(10, mHeight / 2 + 30 + 2 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight), 10, 10, mPaint);
+       canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight), 10, 10, mPaint);
+       canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 30 + 2 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 30 + 3 * mRectHeight), 10, 10, mPaint);
+       //第四排
+       mPaint.setColor(Color.GRAY);
+       canvas.drawRoundRect(new RectF(10, mHeight / 2 + 40 + 3 * mRectHeight, 10 + mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight), 10, 10, mPaint);
+       mPaint.setColor(Color.WHITE);
+       canvas.drawRoundRect(new RectF(20 + mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 20 + 2 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight), 10, 10, mPaint);
+       mPaint.setColor(Color.GRAY);
+       canvas.drawRoundRect(new RectF(30 + 2 * mRectWidth, mHeight / 2 + 40 + 3 * mRectHeight, 30 + 3 * mRectWidth, mHeight / 2 + 40 + 4 * mRectHeight), 10, 10, mPaint);
 
         mPaint.setColor(Color.BLACK);
         mPaint.setTextSize(60);// 设置字体大小
@@ -286,3 +285,12 @@ onDraw方法增加：
 ![](http://upload-images.jianshu.io/upload_images/490111-aecfc093b1db1a2d.gif?imageMogr2/auto-orient/strip)
 
 现在看起来舒服多了，~_~
+
+###2017-10-25
+
+修复了在5.0版本以下机器上崩溃的bug
+
+```
+drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, Paint paint)这种方式在5.0以下的机器上会报错，
+需要换成drawRoundRect(RectF rect, float rx, float ry, Paint paint)
+```

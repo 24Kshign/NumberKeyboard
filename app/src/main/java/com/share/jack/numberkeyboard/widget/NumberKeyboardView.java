@@ -140,7 +140,7 @@ public class NumberKeyboardView extends View {
 
     /**
      * drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, Paint paint)这种方式在5.0以下的机器上会报错，
-     * 需要换成drawRoundRect(RectF rect, float rx, float ry, @NonNull Paint paint)
+     * 需要换成drawRoundRect(RectF rect, float rx, float ry, Paint paint)
      *
      * @param canvas
      */
