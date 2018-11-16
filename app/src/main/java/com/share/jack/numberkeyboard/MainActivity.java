@@ -7,9 +7,9 @@ import android.widget.TextView;
 import com.share.jack.numberkeyboard.widget.FullScreenNumberKeyboardView;
 import com.share.jack.numberkeyboard.widget.NumberKeyboardView;
 
-public class MainActivity extends Activity implements FullScreenNumberKeyboardView.OnNumberClickListener {
+public class MainActivity extends Activity implements NumberKeyboardView.OnNumberClickListener {
 
-    private FullScreenNumberKeyboardView mNkvKeyboard;
+    private NumberKeyboardView mNkvKeyboard;
     private TextView mTvText;
     private String str = "";
 
@@ -23,7 +23,7 @@ public class MainActivity extends Activity implements FullScreenNumberKeyboardVi
 
     private void initView() {
         mTvText = (TextView) findViewById(R.id.am_tv_text);
-        mNkvKeyboard = (FullScreenNumberKeyboardView) findViewById(R.id.am_nkv_keyboard);
+        mNkvKeyboard = (NumberKeyboardView) findViewById(R.id.am_nkv_keyboard);
         mNkvKeyboard.setOnNumberClickListener(this);
     }
 
